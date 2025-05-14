@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/ImageEditing">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Size Upscaler Pro - Advanced Image Upscaler</title>
+    <meta name="description" content="Transform low-resolution images to stunning HD quality instantly. Enlarge JPG/PNG images while maintaining perfect clarity.Convert low-resolution JPG/PNG photos to HD quality in seconds. Enhance picture quality, increase resolution without losing clarity. Try our online image upscaler now!">
+
+    <meta name="keywords" content="image upscaler,online photo enhancer, enhance photo quality, increase image resolution, JPG to HD, PNG enlarger, enhance photo quality, image quality improver, picture enlarger tool">
+    <link rel="canonical" href="https://yourdomain.com/image-upscaler">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/image-upscaler">
+    <meta property="og:title" content="PixelPerfect Pro: AI-Powered Image Upscaling & Photo Enhancement">
+    <meta property="og:description" content="Free online tool to upscale images using AI. Convert low-quality photos to HD instantly. Enhance resolution and quality of JPG/PNG images in seconds.">
+    <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free AI Image Upscaler - Enhance Photo Quality Online | PixelPerfect Pro">
+    <meta name="twitter:description" content="Upscale low-resolution images to HD quality instantly with AI technology. Free online tool for enhancing JPG/PNG photos without quality loss.">
+    <meta name="twitter:image" content="https://yourdomain.com/images/twitter-card.jpg">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PixelPerfect Pro Image Upscaler",
+        "applicationCategory": "Multimedia",
+        "operatingSystem": "Web",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "2850"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/pica@5.2.0/dist/pica.min.js"></script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+    crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --accent: #8b5cf6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --success: #13e6a0;
+            --error: #ef4444;
+            --accent-rgb: 139, 92, 246;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, sans-serif;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            display: flex;
+            max-width: auto;
+            margin: 0 auto;
+        }
+
+        /* Modified side design styles for ads */
+        .side-design {
+            flex: 0 0 180px;
+            min-height: 100vh;
+            padding: 1rem;
+            background: #fff !important; /* Override gradient */
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            top: 140px; /* Start below header */
+            height: calc(1940px - 140px);
+            overflow-y: auto;
+            
+        }
+        .main-content {
+            flex: 1 ;
+            padding-top: 120px;
+            max-width: 900px; /* Maximum content width */
+            padding: 1rem 1rem;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+        .content-spacer {
+            height: 120px; /* Matches header height */
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: auto;
+            margin: 0 auto;
+            z-index: 1000;
+            text-align: center;
+            padding: 1.0rem 1rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 0 0 0rem 0em;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-mask-image: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom:0.3rem;
+        }
+        /* Header navigation styles */
+        .header nav {
+            margin-top: 0.1rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: left;
+        }
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.2rem 0.8rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            background: rgba(5, 111, 240, 0.1);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .upload-section {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border: 2px dashed #1270e3;
+            border-radius: 1.5rem;
+            padding: 0.1rem 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .upload-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-color: var(--success);
+        }
+
+        .upload-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.0rem 1.5rem;
+            border: none;
+            border-radius: 999px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .upload-btn:hover { 
+            transform: scale(1.05);
+            background: var(--success); 
+        }
+
+        .upload-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -50% }
+            100% { left: 150% }
+        }
+
+        .comparison-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 1rem auto;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: #f1f5f9;
+            overflow: hidden;
+        }
+
+        .image-before-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .image-before,
+        .image-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        .image-before {
+            transform-origin: left center;
+        }
+
+        .image-after {
+            z-index: 2;
+            transform-origin: right center;
+        }
+        .slider-control {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: white;
+            cursor: col-resize;
+            z-index: 10;
+            transform: translateX(-50%);
+            z-index: 4; /* Make sure slider stays on top */
+        }
+
+        .slider-control::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-label {
+            position: absolute;
+            top: 10px;
+            padding: 8px 16px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            z-index: 11;
+            pointer-events: none;
+        }
+
+        .label-before { left: 10px; }
+        .label-after { right: 10px; }
+
+        .controls {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(5px);
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .scale-factor {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.1rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 999px;
+            margin: 1.5rem 0;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .process-btn {
+            background: var(--accent);
+            color: white;
+            width: 100%;
+            padding: 1.0rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        /* Enhance Button Hover Effects */
+        .process-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+        }
+
+        .process-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -6px rgba(var(--accent-rgb), 0.4);
+            background: var(--success);
+            color: black;
+        }
+
+        .process-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.3),
+                transparent
+            );
+            transition: all 0.6s ease;
+        }
+
+        .process-btn:hover::before {
+            left: 100%;
+        }
+            
+
+        .process-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .loader {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #fff;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .download-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 999px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transform: translateY(150%);
+            opacity: 0;
+            z-index: 1001;
+        }
+
+        .download-btn.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        /* Download Button Hover Effects */
+        .download-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2,1);
+            transform-origin: center;
+        }
+
+        .download-btn:hover {
+            background: var(--success);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 12px 20px -8px rgba(16, 185, 129,     0.4);
+        }
+
+        .download-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .download-btn:hover::after {
+            opacity: 1;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(150%);
+            background: var(--dark);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            opacity: 0;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .ad-space {
+            position: fixed;
+            top: 50%;
+            right: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            width: 70vw;
+            min-height: 70vw;
+            border-radius: 1rem;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .close-ad {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--error);
+        }
+        /* Bottom ad styling */
+        .bottom-ad {
+            width: 100%;
+            max-width: auto;
+            margin: 0rem auto ;
+            padding: 1rem 0;
+            background: white;
+            border-radius: 1rem;
+            min-height: 160px;
+
+        }
+        .bottom-ad ins {
+            margin: 0 auto;
+            display: inline-block !important;
+        }
+        /* ======== FAQ Section Styles ======== */
+        .faq-section {
+            margin: 1rem auto;
+            padding: 1rem ;
+            max-width: 1000px;
+        }
+        .faq-item details {
+    padding: 0;
+    margin: 0;
+}
+        .faq-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 2.0rem;
+            position: relative;
+        }
+
+        .faq-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .faq-item {
+            background: rgba(255,255,255,0.98);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+            overflow: hidden;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99,102,241,0.1);
+        }
+
+        .faq-item summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.25rem 2rem;
+            font-weight: 600;
+            color: var(--dark);
+            position: relative;
+            /* padding-right: 2rem; */
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item[open] summary::after {
+            content: '-';
+        }
+
+        .faq-content {
+            padding: 0rem 2rem 0rem;
+            color: #296aed;
+            line-height: 1.6;
+            max-height: 500px;
+            animation: fadeIn 0.3s ease;
+            text-align: none;
+            position: relative;
+            /* overflow: hidden; Contain content */
+            /* word-wrap: break-word; Handle long text */
+        }
+        .faq-item[open] {
+            margin-bottom: 1.5rem; /* Add space when expanded */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ======== Footer Styles ======== */
+        .site-footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .footer-column {
+            padding: 0 1rem;
+        }
+
+        .footer-heading {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            position: relative;
+            color: var(--light);
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 35px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-column {
+                text-align: center;
+                padding: 0;
+            }
+            
+            .footer-heading::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+        @media (max-width: 768px) {
+            .side-design { display: none; }
+            .main-content { padding-top: 100px; }
+            .header { 
+                width: 100%;
+                border-radius: 0;
+                padding: 1rem; 
+            }
+            .header nav {
+                gap: 1rem;
+            }
+            .nav-link {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+            .image-container { height: 300px; }
+            .bottom-ad {
+                max-width: 100%;
+                min-height: 100px;
+                margin: 2rem auto;
+                padding: 1rem;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Side Ad -->
+    <div class="side-design">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+            data-ad-slot="XXXXXXXXXX1"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="main-content">
+        <header class="header">
+            <h1>🖼️ Image Upscaler Pro</h1>
+            <p>Transform Low-Quality Images to Stunning HD with Perfection.</p>
+            <nav>
+                <a href="homepage.html" class="nav-link" id="homeLink">Home</a>
+                <!-- To this (assuming your other file is named tools.html) -->
+                <a href="homepage.html#tools" class="nav-link" id="toolsLink">Tools</a>
+            </nav>
+        </header>
+        <div class="content-spacer"></div> <!-- Add this line -->
+        <div class="upload-section" id="dropZone">
+            <input type="file" id="imageInput" accept="image/*" hidden>
+            <button class="upload-btn" onclick="document.getElementById('imageInput').click()">
+                📤 Upload Image
+            </button>
+            <p>Drag & drop image (Max 5MB)</p>
+
+            <div class="comparison-container" id="comparisonContainer">
+                <div class="image-container">
+                    <div class="image-label label-before">Original</div>
+                    <div class="image-label label-after">Enhanced</div>
+                    <div class="image-before-container" id="beforeContainer">
+                        <img class="image-before" id="originalImage" alt="">
+                    </div>
+                    <img class="image-after" id="processedImage" alt="">
+                    <div class="slider-control" id="slider"></div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="scale-factor">
+                    <span>Enlargement Scale</span>
+                    <span id="scaleValue">2x</span>
+                </div>
+                <input type="range" id="scaleSlider" min="1" max="4" step="1" value="2">
+                <button class="process-btn" id="processBtn">
+                    <span class="btn-text">✨ Enhance Image</span>
+                    <div class="loader" id="loader"></div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Floating Ad -->
+        <div class="ad-space" id="adSpace">
+            <span class="close-ad" onclick="closeAd()">×</span>
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                data-ad-slot="XXXXXXXXXX"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <!-- Download Button -->
+        <button class="download-btn" id="downloadBtn">
+            ⬇️ Download HD Image
+        </button>
+
+        <!-- Toast -->
+        <div class="toast" id="toast"></div>
+        <!-- Bottom Ad -->
+        <div class="bottom-ad">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                data-ad-slot="XXXXXXXXXX2"
+                data-ad-format="horizontal"
+                data-ad-layout-key="-fg+5n+6t-11+49"
+                data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+        <!-- FAQ Section -->
+    <section class="faq-section" aria-labelledby="faqTitle">
+            <h2 class="faq-title" id="faqTitle">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <details style="margin-bottom: 1rem;">
+                    <summary>What file formats do you support?</summary>
+                    <div class="faq-content">
+                        <p>We support all common image formats including JPG, PNG, BMP, and WEBP. Maximum file size is 5MB.</p>
+                    </div>
+                </details>
+                <details style="margin-bottom: 1rem;">
+                    <summary>Is there any cost to use this tool?</summary>
+                    <div class="faq-content">
+                        <p>Our basic image upscaling service is completely free to use. We offer premium features for professional users.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary>How does the AI upscaling work?</summary>
+                    <div class="faq-content">
+                        <p>Our advanced machine learning algorithms analyze image patterns to intelligently enhance resolution while maintaining quality.</p>
+                    </div>
+                </details>
+            </div>
+    </section>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 class="footer-heading">PixelPerfect Pro</h3>
+                <p>Transform your images with AI-powered enhancement technology.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/features">Features</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/pricing">Pricing</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Connect</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📸</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Image Upscaler Pro. All rights reserved.</p>
+        </div>
+    </footer>
+    </div>
+     <!-- Right Side Ad -->
+     <div class="side-design right-side">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+            data-ad-slot="XXXXXXXXXX3"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+    
+
+    <script>
+        const elements = {
+            imageInput: document.getElementById('imageInput'),
+            scaleSlider: document.getElementById('scaleSlider'),
+            scaleValue: document.getElementById('scaleValue'),
+            processBtn: document.getElementById('processBtn'),
+            loader: document.getElementById('loader'),
+            downloadBtn: document.getElementById('downloadBtn'),
+            toast: document.getElementById('toast'),
+            originalImage: document.getElementById('originalImage'),
+            processedImage: document.getElementById('processedImage'),
+            slider: document.getElementById('slider'),
+            dropZone: document.getElementById('dropZone'),
+            adSpace: document.getElementById('adSpace'),
+            comparisonContainer: document.getElementById('comparisonContainer'),
+            beforeContainer: document.getElementById('beforeContainer')
+        };
+        // Highlight active page
+        const currentPage = window.location.pathname.split('/').pop();
+        document.querySelectorAll('.nav-link').forEach(link => {
+        // Compare against full href including anchor links
+        const linkPath = link.href.split(/[#?]/)[0].split('/').pop();
+        if(linkPath === currentPage) {
+            link.classList.add('active');
+        }
+        });
+        
+        // Add resize observer to handle container changes
+        const resizeObserver = new ResizeObserver(entries => {
+            containerRect = entries[0].contentRect;
+        });
+        resizeObserver.observe(elements.comparisonContainer);
+
+        // Image processing variables
+        let originalFileType = 'image/png';
+        let originalFileName = 'image';
+        let quality = 1;
+
+        // Slider functionality
+        let isDragging = false;
+        let containerRect = null;
+
+        // Modify the updateSliderPosition function
+        function updateSliderPosition(clientX) {
+            if (!containerRect) return;
+    
+            const x = clientX - containerRect.left;
+            const percentage = (x / containerRect.width) * 100;
+            const clamped = Math.max(5, Math.min(percentage, 95)); // Keep within 5-95% bounds
+
+            // Update slider and container width
+            elements.beforeContainer.style.width = `${clamped}%`;
+            elements.slider.style.left = `${clamped}%`;
+
+            // Calculate inverse scaling factors
+            const scaleOriginal = 1 + (clamped/100); // 1x to 2x
+            const scaleEnhanced = 2 - (clamped/100); // 2x to 1x
+
+            // Apply transforms with containment
+            elements.originalImage.style.transform = `scale(${scaleOriginal}) translateZ(0)`;
+            elements.processedImage.style.transform = `scale(${scaleEnhanced}) translateZ(0)`;
+        
+        }
+
+        elements.slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            containerRect = elements.comparisonContainer.getBoundingClientRect();
+            updateSliderPosition(e.clientX);
+        });
+
+        document.addEventListener('mouseup', () => isDragging = false);
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            containerRect = elements.comparisonContainer.getBoundingClientRect();
+            updateSliderPosition(e.clientX);
+        });
+
+        // File Handling
+        elements.imageInput.addEventListener('change', handleFileUpload);
+        elements.dropZone.addEventListener('dragover', handleDragOver);
+        elements.dropZone.addEventListener('drop', handleFileDrop);
+
+        function handleFileUpload(e) {
+            const file = e.target.files[0];
+            validateAndProcessFile(file);
+        }
+
+        function handleFileDrop(e) {
+            e.preventDefault();
+            elements.dropZone.style.transform = 'scale(1)';
+            const file = e.dataTransfer.files[0];
+            validateAndProcessFile(file);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            elements.dropZone.style.transform = 'scale(1.02)';
+        }
+
+        function validateAndProcessFile(file) {
+            if (!file.type.match('image.*')) {
+                showToast('⚠️ Please upload an image file', 'error');
+                return;
+            }
+
+            if (file.size > 5 * 1024 * 1024) {
+                showToast('⚠️ File size exceeds 5MB limit', 'error');
+                return;
+            }
+
+            // Store original file info
+            originalFileType = file.type;
+            originalFileName = file.name.replace(/\.[^/.]+$/, "");
+            quality = originalFileType === 'image/jpeg' ? 0.95 : 1;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                elements.originalImage.src = e.target.result;
+                elements.processedImage.src = ''; // Clear enhanced image
+                // Set initial transforms when new image loads
+                setTimeout(() => {
+                // Reset to default scales
+                    elements.originalImage.style.transform = 'scale(1) translateZ(0)';
+                    elements.processedImage.style.transform = 'scale(1) translateZ(0)';
+                    containerRect = elements.comparisonContainer.getBoundingClientRect();
+                }, 50);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Image Processing
+        async function processImage() {
+            elements.processBtn.disabled = true;
+            elements.loader.style.display = 'block';
+            elements.processBtn.querySelector('.btn-text').textContent = 'Processing...';
+
+            try {
+                const scaleFactor = parseInt(elements.scaleSlider.value);
+                const img = new Image();
+                img.src = elements.originalImage.src;
+        
+                await new Promise((resolve, reject) => {
+                    img.onload = async () => {
+                        try {
+                            // Create source canvas
+                            const sourceCanvas = document.createElement('canvas');
+                            const sourceCtx = sourceCanvas.getContext('2d');
+                            sourceCanvas.width = img.width;
+                            sourceCanvas.height = img.height;
+                            sourceCtx.drawImage(img, 0, 0);
+
+                            // Create destination canvas
+                            const destCanvas = document.createElement('canvas');
+                            destCanvas.width = img.width * scaleFactor;
+                            destCanvas.height = img.height * scaleFactor;
+
+                            // Use Pica for high-quality scaling
+                            await pica().resize(sourceCanvas, destCanvas, {
+                                quality: 3, // Highest quality
+                                alpha: true,
+                                unsharpAmount: 100,
+                                unsharpRadius: 0.6,
+                                unsharpThreshold: 10
+                            });
+
+                            // Convert to blob with quality settings
+                            destCanvas.toBlob((blob) => {
+                                const processedUrl = URL.createObjectURL(blob);
+                                elements.processedImage.src = processedUrl;
+                                resolve();
+                                }, originalFileType, quality);
+                        } catch (error) {
+                            reject(error);
+                        }
+                    };
+                    img.onerror = reject;
+                });
+
+                showToast('🎉 Image enhanced successfully!', 'success');
+                elements.downloadBtn.classList.add('show');
+            } catch (error) {
+                showToast('❌ Error processing image', 'error');
+                console.error(error);
+            }
+
+            elements.loader.style.display = 'none';
+            elements.processBtn.disabled = false;
+            elements.processBtn.querySelector('.btn-text').textContent = '✨ Enhance Image';
+        }
+        // Download Handling
+        function downloadImage() {
+            const ext = originalFileType.split('/')[1] || 'png';
+            fetch(elements.processedImage.src)
+                .then(res => res.blob())
+                .then(blob => {
+                    const link = document.createElement('a');
+                    link.download = `${originalFileName}-enhanced.${ext}`;
+                    link.href = URL.createObjectURL(blob);
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                });
+        }
+
+        // UI Controls
+        elements.scaleSlider.addEventListener('input', (e) => {
+            elements.scaleValue.textContent = `${e.target.value}x`;
+        });
+
+        elements.processBtn.addEventListener('click', processImage);
+        elements.downloadBtn.addEventListener('click', downloadImage);
+
+        function showToast(message, type) {
+            elements.toast.textContent = message;
+            elements.toast.className = `toast ${type} show`;
+            setTimeout(() => {
+                elements.toast.className = 'toast';
+            }, 3000);
+        }
+
+        function closeAd() {
+            elements.adSpace.style.display = 'none';
+        }
+
+        // Initialize AdSense
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>
