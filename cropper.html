@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebApplication">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="revisit-after" content="7 days">
+    <meta name="geo.region" content="US">
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="ImageCropperPro: Free Online Image Cropper with Advanced Editing Tools">
+
+    <meta name="description" content="Crop, rotate, and edit images instantly with ImageCropPro - the Professional Image Cropping Tool with Real-Time Preview.Supports JPG, PNG, WebP formats. No registration required!">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/cropper/">
+    <meta property="og:title" content="ImageCropPro: Free Online Image Cropper with Advanced Editing Tools">
+    <meta property="og:description" content="Professional online image cropper with real-time preview and multiple aspect ratios. Edit images instantly in your browser!">
+    <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourdomain.com/cropper/">
+    <meta property="twitter:title" content="ImageCropPro: Free Online Image Cropper with Advanced Editing Tools">
+    <meta property="twitter:description" content="Professional online image cropper with real-time preview and multiple aspect ratios. Edit images instantly in your browser!">
+    <meta property="twitter:image" content="https://yourdomain.com/images/twitter-card.jpg">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://yourdomain.com/cropper">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js" as="script" crossorigin>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <meta property="og:image" content="thumbnail.jpg">
+    <link rel="canonical" href="https://yourdomain.com/cropper">
+    <title>ImageCropperPro - Advanced Online Image Croper For U</title>
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "ImageCropPro",
+            "description": "Professional online image cropping tool for social media with real-time preview and multiple aspect ratios",
+            "applicationCategory": "Multimedia",
+            "operatingSystem": "Web",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": "1500"
+            },
+            "video": {
+                "@type": "VideoObject",
+                "name": "How to Crop Images for Social Media",
+                "description": "Step-by-step tutorial using ImageCropperPro",
+                "thumbnailUrl": "https://yourdomain.com/video-thumbnail.webp",
+                "uploadDate": "2023-01-01"
+            }
+        }
+    </script>
+
+    <!-- Cropper.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #2196f3;
+            --secondary: #4caf50;
+            --bg: #f5f5f5;
+            --text: #333;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui;
+            color: var(--text);
+            background: var(--bg);
+            display: grid;
+            grid-template-columns: 250px minmax(300px, 800px) 250px;
+            grid-template-rows: 1fr auto;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        /* Replace the existing .ad-left and .ad-right styles with these: */
+        .ad-left {
+            position: fixed;
+            left: 0;
+            top: 0;
+            margin: 0;
+            height: 100vh;
+            width: 200px;
+            padding: 0rem;
+            background: white;
+            border-right: 1px solid #ddd;
+            z-index: 1000;
+            overflow-y: auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad-right {
+            position: fixed;
+            right: 0;
+            top: 0;
+            margin: 0;
+            height: 100vh;
+            width: 200px;
+            padding: 0rem;
+            background: white;
+            border-left: 1px solid #ddd;
+            z-index: 1000;
+            overflow-y: auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .ad-container1 {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .ad-container1 ins {
+            width: 100% !important;
+            height: 100% !important;
+            display: block !important;
+            margin: 0 auto;
+        }
+        .main-content {
+
+            grid-column: 2;
+            padding: 2rem;
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+
+        }
+        
+        /* Home Button Styles */
+        .home-button {
+            position: absolute;
+            top: 35px;
+            left: 230px;
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 30%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #0d8bf2;
+            transform: scale(1.1);
+        }
+
+        .home-button img {
+            width: 24px;
+            height: 24px;
+        }
+        .main-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            font-size: 2.0rem;
+            margin-bottom: 0.1rem;
+            color: var(--primary);
+        }
+        .header-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #444;
+            margin-top: 1rem;
+        }
+
+        /* Toolbar */
+        .toolbar {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 1rem 0;
+            justify-content: center;
+        }
+
+        button, select {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        /* Add footer styles */
+        .footer {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 1.5rem;
+            background: #666;
+            color: #ffffff;
+            font-size: 0.9em;
+            border-top: 1px solid #ddd;
+            margin-top: auto;
+        }
+        .cropper-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin: 1rem auto;
+            max-width: 100%;
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+        }
+
+        .toolbar {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 1rem 0;
+            justify-content: center;
+        }
+
+        button {
+            background: rgb(0, 183, 255);
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            color: #000;
+            background: #43ec49;
+        }
+
+        .ad-container {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0 auto;
+            width: 550px;
+            height: 350px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            overflow: hidden;
+            
+        }
+
+        #floating-ad-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close-ad {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 24px;
+            height: 24px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+        /* About Section */
+        .about-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        /* FAQ Section Styles */
+        .faq-section {
+            margin: 3rem auto;
+            max-width: 800px;
+            width: 100%;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 1rem 0;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin: 0.5rem 0;
+            cursor: pointer;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .faq-question::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #666;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .faq-answer ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        @media (max-width: 425px) {
+            body {
+                grid-template-columns: 1fr;
+            }
+            
+            .ad-left {
+                display: none;
+            }
+            .ad-right{
+                display: none;
+            }
+            .ad-container {
+                width: 300px;
+                height: 300px;
+                
+            }
+            .main-content {
+                margin: 0;
+                padding: 1rem;
+            }
+            .home-button {
+                top: 10px;
+                left: 10px;
+                width: 30px;
+                height: 30px;
+            }
+            
+        }
+        @media (max-width: 768px) {
+            .faq-section {
+                padding: 1rem;
+                margin: 2rem 0;
+            }
+            
+            .faq-question {
+                font-size: 1rem;
+            }
+        }
+        @media (min-width: 600px) and (max-width: 768px) {
+            body {
+                grid-template-columns: 100px 1fr 100px;
+            }
+            .main-content {
+                margin-left: 0px;
+                margin-right: 0;
+                padding: 1rem;
+                
+            }
+            
+            .ad-left {
+                width: 100px;
+                height: 100vh;
+                position: fixed;
+                left: 0;
+            }
+            .ad-right{
+                width: 100px;
+                height: 100vh;
+                position: fixed;
+                right: 0;
+            }
+            .ad-container {
+                width: 550px;
+                height: 350px;
+                
+            }
+            .home-button {
+                top: 60px;
+                left: 110px;
+                position: fixed;
+                z-index: 1001;
+
+            }
+            
+        }
+        @media (max-width: 1024px) {
+            .main-content {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        .skeleton {
+            animation: skeleton-loading 1s linear infinite alternate;
+            background: #ddd;
+            border-radius: 4px;
+        }
+
+        @keyframes skeleton-loading {
+            0% { opacity: 0.4 }
+            100% { opacity: 0.8 }
+        }
+        /* Add toast notification styles */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff4444;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .toast.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Button (Add this at the top of your body) -->
+    <a href="homepage.html" class="home-button" title="Return to Home">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+    </a>
+    <!-- Fixed Left Ad Section (Non-closeable) -->
+    <div class="ad-left">
+        <div class="ad-container1">
+            <!-- REPLACE THIS COMMENT WITH YOUR LEFT AD CODE -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUB_ID"></script>
+            <!-- Fixed size ad unit -->
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:100%;height:100vh;background:#e2dbdb"
+                data-ad-client="ca-pub-YOUR_PUB_ID"
+                data-ad-slot="LEFT_SLOT_ID"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </div>
+    <div class="main-content">
+        <main>
+            <!-- Add after the opening <main> tag -->
+            <header class="main-header">
+                <h1>Free Online Image Cropper - Crop Photos Instantly</h1>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+                <p class="header-description">
+                    ImageCropPro is a professional browser-based image editing tool that lets you 
+                    <strong>crop images online</strong> for free. Easily adjust aspect ratios (1:1, 4:3, 16:9), 
+                    rotate photos, and download in <em>JPG, PNG, WebP</em> formats. No registration required - 
+                    start cropping images directly in your browser!
+                </p>
+            </header>
+            
+            <article>
+                <div class="cropper-container">
+                    <img id="cropper-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+                        class="skeleton" style="max-width: 100%">
+                </div>
+
+                <div class="toolbar">
+                    <button onclick="document.getElementById('fileInput').click()">📁 Upload</button>
+                    <button onclick="rotate(-90)">↺ Rotate</button>
+                    <select id="aspectRatio">
+                        <option value="free">Free</option>
+                        <option value="1:1">1:1</option>
+                        <option value="4:3">4:3</option>
+                        <option value="16:9">16:9</option>
+                    </select>
+                    <button onclick="download()">Download File</button>
+                </div>
+            </article>
+            
+            <!-- Add before the closing </main> tag -->
+            <section class="faq-section">
+                <h2>Image Cropping FAQ</h2>
+                <div class="faq-container" itemscope itemtype="https://schema.org/FAQPage">
+                    <!-- Question 1 -->
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">What image formats can I crop with ImageCropPro?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">Our online cropper supports all major image formats including 
+                            <strong>JPG/JPEG, PNG, WebP</strong>, and BMP. The cropped image will maintain 
+                            its original format unless modified during download.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">Can I crop images for social media profiles?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">Yes! Use our preset aspect ratios to create perfect crops for:
+                            <ul>
+                                <li>Instagram posts (1:1 square)</li>
+                                <li>Facebook cover photos (16:9)</li>
+                                <li>YouTube thumbnails (16:9)</li>
+                                <li>Twitter headers (3:1)</li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">Is my image data secure?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">Absolutely. ImageCropPro processes all images 
+                            <strong>client-side in your browser</strong> - we never upload your photos 
+                            to our servers. Your privacy is 100% guaranteed.</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 4 -->
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">Does this work on mobile devices?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <p itemprop="text">Yes, our image cropper is fully responsive and works 
+                            perfectly on all devices including <strong>smartphones and tablets</strong>. 
+                            Touch-friendly interface makes mobile cropping easy.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Copyright Footer -->
+        <footer class="footer">
+            © <span id="copyrightYear"></span> ImageCropperPro. All rights reserved. | 
+            Developed by Sumon Denreh
+        </footer>
+    </div>
+    <!-- Fixed Right Ad Section (Non-closeable) -->
+    <div class="ad-right">
+        <div class="ad-container1">
+            <!-- REPLACE THIS COMMENT WITH YOUR RIGHT AD CODE -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUB_ID"></script>
+            <!-- Fixed size ad unit -->
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:100%;height:100vh;background:#e2dbdb"
+                data-ad-client="ca-pub-YOUR_PUB_ID"
+                data-ad-slot="RIGHT_SLOT_ID"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </div>
+    
+    <!-- Floating Ad (Closeable) -->
+    <div class="ad-container" id="adContainer">
+        <button class="close-ad" aria-label="Close floating advertisement" onclick="toggleAd(false)">×</button>
+        <div id="floating-ad-content">
+            <!-- REPLACE THIS COMMENT WITH YOUR FLOATING AD CODE -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle"
+                style="display:inline-block;"
+                data-ad-client="ca-pub-YOUR_PUB_ID"
+                data-ad-slot="FLOATING_SLOT_ID"
+                data-ad-format="auto"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <div style="width: 549px;;height: 349px;;background:#e2dbdb"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+    <script>
+        // Force ad resize and proper rendering
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                if (typeof(adsbygoogle) !== 'undefined') {
+                    // Refresh all ads
+                    adsbygoogle.push({});
+                    
+                    // Manually resize ad containers if needed
+                    document.querySelectorAll('.ad-container ins').forEach(ad => {
+                        ad.style.width = '160px';
+                        ad.style.height = '600px';
+                        ad.style.margin = '0 auto';
+                    });
+                }
+            }, 500);
+        });
+    </script>
+    
+    <script>
+        let cropper = null;
+        let originalFormat = 'png'; // Default format
+        const image = document.getElementById('cropper-image');
+        
+        function initCropper() {
+            cropper = new Cropper(image, {
+                viewMode: 2,
+                dragMode: 'move',
+                responsive: true,
+                restore: false,
+                autoCropArea: 1,
+                toggleDragModeOnDblclick: false,
+            });
+        }
+
+        function rotate(degrees) {
+            if (cropper) cropper.rotate(degrees);
+        }
+
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            // Detect original file format
+            originalFormat = file.type.split('/')[1] || 'png';
+            if (originalFormat === 'jpeg') originalFormat = 'jpg'; // Normalize extension
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                image.classList.remove('skeleton');
+                image.src = event.target.result;
+                if (cropper) cropper.destroy();
+                initCropper();
+            }
+            reader.readAsDataURL(file);
+        });
+
+        document.getElementById('aspectRatio').addEventListener('change', function(e) {
+            const ratio = e.target.value;
+            const ratios = {
+                '1:1': 1/1,
+                '4:3': 4/3,
+                '16:9': 16/9,
+                'free': NaN
+            };
+            cropper.setAspectRatio(ratios[ratio]);
+        });
+
+        function download() {
+            // Check if an image is loaded
+            const image = document.getElementById('cropper-image');
+            if (!cropper || image.src === 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=') {
+                showToast('⚠️ Please upload an image first!');
+                return;
+            }
+            // Proceed with download if image exists
+            const canvas = cropper.getCroppedCanvas();
+            let mimeType = `image/${originalFormat === 'jpg' ? 'jpeg' : originalFormat}`;
+            
+            // Handle format compatibility
+            if (!['image/png', 'image/jpeg', 'image/webp'].includes(mimeType)) {
+                mimeType = 'image/png';
+                originalFormat = 'png';
+            }
+            canvas.toBlob(blob => {
+                const link = document.createElement('a');
+                link.download = `cropped-image.${originalFormat}`;
+                link.href = URL.createObjectURL(blob);
+                link.click();
+                showToast(`Downloaded as ${originalFormat.toUpperCase()}!`);
+                showToast('✔️ Image downloaded successfully!');
+            }, mimeType);
+        }
+
+        function toggleAd(show) {
+            const ad = document.getElementById('adContainer');
+            ad.classList.toggle('hidden', !show);
+            localStorage.setItem('adVisible', show);
+        }
+
+        function showToast(message, duration=3000) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            setTimeout(() => toast.classList.remove('show'), duration);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initCropper();
+            if (localStorage.getItem('adVisible') !== 'false') toggleAd(true);
+
+        });
+
+        const debounce = (fn, delay) => {
+            let timeout;
+            return (...args) => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => fn.apply(this, args), delay);
+            }
+        };
+
+        window.addEventListener('resize', debounce(() => {
+            cropper && cropper.destroy();
+            initCropper();
+        }, 200));
+    </script>
+    <!-- Add this script RIGHT BEFORE closing body tag -->
+
+    <script>
+        // Exit Intent Ad
+        document.addEventListener('mouseout', (e) => {
+            if (!e.relatedTarget && !localStorage.getItem('adClosed')) {
+                document.getElementById('adContainer').classList.remove('hidden');
+            }
+        });
+
+        // Copyright Year
+        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+
+        // Image Upload with Loading Spinner
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const spinner = document.getElementById('loadingSpinner');
+            spinner.style.display = 'block';
+            
+            // ... (rest of your existing cropper code)
+            
+            spinner.style.display = 'none';
+        });
+
+        // Cache Control Headers (Should be set server-side)
+        // Example for Apache (.htaccess):
+        /*
+        <FilesMatch "\.(js|css|webp|jpg|png)$">
+            Header set Cache-Control "max-age=31536000, public"
+        </FilesMatch>
+        */
+    </script>
+</body>
+</html>
