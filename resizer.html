@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebApplication">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Improved Meta Tags -->
+    <meta name="description" content="Resize images instantly online for free! Optimize photos for web, social media (Facebook, Instagram), and mobile devices. Supports JPG, PNG formats with quality preservation.">
+
+    <meta name="keywords" content="image resizer,free image resizer,online photo resize, optimize website images, resize images, online photo editor, image convertersocial media image sizing, jpeg resizer, png compressor, web image optimization">
+    <meta name="author" content="Your Company Name">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Instant Image Resizer",
+            "description": "Free online tool to resize and optimize images for web and social media",
+            "applicationCategory": "Multimedia",
+            "operatingSystem": "All",
+            "offers": {
+                "@type": "Offer",
+                "price": "0"
+            }
+        }
+    </script>
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Free Online Image Resizer - Optimize Photos for Web & Social Media">
+    <meta property="og:description" content="Resize images instantly without quality loss. Perfect for website optimization, social media posts, and email attachments. Supports JPG, PNG formats.">
+    <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg">
+    <meta property="og:url" content="https://yourdomain.com/image-resizer">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourdomain.com/image-resizer" />
+
+    <title>Instant Image Resizer Online | Free Online Photo Optimization Tool</title>
+    
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #45a049;
+            --ad-width: 160px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin:  0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: var(--ad-width) minmax(300px, 1200px) var(--ad-width);
+            gap: 20px;
+            justify-content: center;
+            grid-template-rows: auto auto 1fr auto;
+        }
+
+        .ad-container {
+            position: sticky;
+            top: 10%;
+            width: auto;
+            height: auto;
+            background: #f5f5f5;
+            border: 2px dashed #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            border-radius: 10px;
+        }
+        .ad-container ins {
+            margin: 0 auto;
+        }
+
+        .left-ad {
+            left: 10px;
+        }
+
+        .right-ad {
+            right: 10px;
+        }
+        .ad-placeholder {
+            color: #666;
+            text-align: center;
+            padding: 1rem;
+        }
+        main h1 {
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+        main {
+            grid-column: 2;
+            padding: 1.5rem;
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin: 1rem 0;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        
+        .upload-zone {
+            border: 1px dashed var(--primary-color);
+            padding: 4rem;
+            text-align: center;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            background: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .upload-zone:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: blue;
+            background: linear-gradient(45deg, #96f9b4 0%, #8aed94 100%);
+        }
+
+        .upload-zone.dragover {
+            background: #e8f5e9;
+            border-color: var(--secondary-color);
+        }
+
+        #imagePreview {
+            max-width: 100%;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .controls {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .dimension-control {
+            margin: 1rem 0;
+        }
+
+        input[type="number"], input[type="range"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: rgb(255, 0, 217);
+        }
+
+        @media (max-width: 1200px) {
+            .ad-container {
+                position: static;
+                width: 100%;
+                height: auto;
+                margin: 1rem 0;
+                display: none;
+            }
+            
+            body {
+                grid-template-columns: 1fr;
+                padding: 0 10px;
+            }
+            
+            main {
+                grid-column: 1;
+                margin: 1rem 0;
+                padding: 1rem;
+            }
+        }
+        /* FAQ Section Styling */
+        .faq-section {
+            margin: 5rem 0;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-section h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+
+        .faq-item {
+            margin: 0.2rem 0;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+            border: 1px solid #eee;
+        }
+
+        .faq-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .faq-item h3 {
+            color: #333;
+            font-size: 1.0rem;
+            margin-bottom: 0.3rem;
+            cursor: pointer;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .faq-item h3:before {
+            content: "▸";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .faq-item p {
+            color: #666;
+            line-height: 1.5;
+            margin-left: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive FAQ Styling */
+        @media (max-width: 768px) {
+            .faq-section {
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+        
+            .faq-item {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+        
+            .faq-item h3 {
+                font-size: 1rem;
+            }
+        
+            .faq-item p {
+                font-size: 0.9rem;
+            }
+        }
+
+        .related-tools {
+            margin-top: 1rem;
+            padding-top: rem;
+            border-top: 2px solid #eee;
+        }
+
+        .related-tools h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .related-tools ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit minmax (200px, 1fr));
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .related-tools a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            color: #0707e0;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid #eee;
+        }
+
+        .related-tools a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            color: var(--primary-color);
+        }
+    </style>
+    <style>
+        /* Home Button Styles */
+        .home-button {
+            position: absolute;
+            left: 1.5rem;
+            top: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: transparent;
+            color: #000000;
+            /* border-radius: 10px; */
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            /* box-shadow: 0 2px 8px rgba(5, 99, 240, 0.1); */
+            z-index: 1002;
+        }
+    
+        .home-button svg {
+            width: 16px;
+            height: 16px;
+        }
+    
+        .home-button:hover {
+            /* background: #001d3b; */
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background-color: #8aed94;
+            border-radius: 10px;
+        }
+    
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .home-button {
+                left: 1rem;
+                top: 0.8rem;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .home-button svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .home-button span {
+                display: none;
+            }
+            
+            .home-button {
+                padding: 0.4rem;
+            }
+            
+            .home-button svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    
+        .main-header {
+            text-align: center;
+            grid-column: 1 / -1;
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-description {
+            max-width: 800px;
+            margin: 1rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        
+            .header-description {
+                font-size: 0.85rem;
+                padding: 0 1rem;
+            }
+        
+            .home-link {
+                order: 2;
+                margin-top: 0.5rem;
+            }
+        }
+        /* Add this CSS to your existing styles */
+        .main-footer {
+            grid-column: 2;
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1001;
+            border-top: 3px solid var(--secondary-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-section p {
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .main-footer {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+    <!-- Google AdSense Code -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="main-header">
+        <h1>Image Resizer Pro</h1>
+        <!-- Home Button -->
+    <a href="homepage.html" class="home-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        Home
+    </a>
+        <div class="header-description">
+            <p>Free online tool to resize, optimize, and convert images instantly. Perfect for social media, websites, and digital content creation. No registration required!</p>
+        </div>
+    </header>
+    <div class="ad-container left-ad">
+        <!-- Left Ad Unit -->
+        <div class="ad-placeholder">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+            </div>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <main>
+        <h1>Instant Free Online Image Resizer</h1>
+        
+        <div class="upload-zone" id="dropZone">
+            Drag & Drop Image Here<br>or<br>
+            <input type="file" id="fileInput" accept="image/*">
+        </div>
+        <img id="imagePreview" alt="Image resizer preview" loading="lazy">
+        
+        <div class="controls">
+            <div class="dimension-control">
+                <label>Width: <input type="number" id="widthInput"></label>
+                <input type="range" id="widthSlider" class="slider">
+            </div>
+            <div class="dimension-control">
+                <label>Height: <input type="number" id="heightInput"></label>
+                <input type="range" id="heightSlider" class="slider">
+            </div>
+            <div>
+                <label><input type="checkbox" id="aspectRatio" checked> Lock Aspect Ratio</label>
+            </div>
+        </div>
+
+        <select id="formatSelect">
+            <option value="jpeg">JPEG</option>
+            <option value="png">PNG</option>
+        </select>
+        <button id="downloadBtn">Download Resized Image</button>
+        <!-- Added FAQ Section -->
+        <div class="faq-section">
+            <h2>Image Resizing FAQs</h2>
+            <div class="faq-item">
+                <h3>Does resizing affect image quality?</h3>
+                <p>Our resizer uses advanced algorithms to maintain maximum quality while reducing file size.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is this image resizer completely free to use?</h3>
+                <p>Yes! Our online image resizer is 100% free with no hidden costs, watermarks, or registration required. You can resize as many images as you need without any limitations.</p>
+            </div>
+        
+            <div class="faq-item">
+                <h3>Are my images stored on your servers?</h3>
+                <p>No. All image processing happens directly in your browser. We never upload or store your files - your privacy is guaranteed.</p>
+            </div>
+        
+            <div class="faq-item">
+                <h3>Is there any quality loss during resizing?</h3>
+                <p>Our smart algorithms maintain optimal quality while resizing. For best results, we recommend using PNG format when resizing upwards.</p>
+            </div>
+        
+            <div class="faq-item">
+                <h3>What's the maximum image size allowed?</h3>
+                <p>We support images up to 5000x5000 pixels (5MP). For larger professional needs, consider desktop software like Photoshop.</p>
+            </div>
+        
+            <div class="faq-item">
+                <h3>How does this compare to Photoshop?</h3>
+                <p>While Photoshop offers more features, our tool provides faster results for basic resizing needs. Perfect for quick web optimizations!</p>
+            </div>
+        </div>
+        <!-- Internal Links Section -->
+        <div class="related-tools">
+            <h3>More Useful Tools:</h3>
+            <ul>
+                <li><a href="/converter.html">Image Format Converter</a></li>
+                <li><a href="editor.html">Online Photo Editor</a></li>
+                <li><a href="Compressor.html">Image Compression Tool</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <div class="ad-container right-ad">
+        <!-- Right Ad Unit -->
+        <div class="ad-placeholder">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        </div>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <p>&copy; 2024 Instant Image Resizer. All rights reserved.</p>
+                <p>Free Online Tool - No Registration Required</p>
+            </div>
+            <div class="footer-links">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const widthInput = document.getElementById('widthInput');
+        const heightInput = document.getElementById('heightInput');
+        const widthSlider = document.getElementById('widthSlider');
+        const heightSlider = document.getElementById('heightSlider');
+        const aspectRatio = document.getElementById('aspectRatio');
+        const formatSelect = document.getElementById('formatSelect');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        let originalWidth, originalHeight, aspectRatioValue;
+
+        function handleFile(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+                
+                imagePreview.onload = () => {
+                    originalWidth = imagePreview.naturalWidth;
+                    originalHeight = imagePreview.naturalHeight;
+                    aspectRatioValue = originalWidth / originalHeight;
+                    
+                    widthInput.value = originalWidth;
+                    heightInput.value = originalHeight;
+                    widthSlider.max = originalWidth * 2;
+                    heightSlider.max = originalHeight * 2;
+                    widthSlider.value = originalWidth;
+                    heightSlider.value = originalHeight;
+                };
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function updateDimensions(source) {
+            if (aspectRatio.checked) {
+                if (source === 'width') {
+                    heightInput.value = Math.round(widthInput.value / aspectRatioValue);
+                } else {
+                    widthInput.value = Math.round(heightInput.value * aspectRatioValue);
+                }
+            }
+            
+            widthSlider.value = widthInput.value;
+            heightSlider.value = heightInput.value;
+            
+            imagePreview.width = widthInput.value;
+            imagePreview.height = heightInput.value;
+        }
+
+        // Event Listeners
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            handleFile(e.dataTransfer.files[0]);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFile(e.target.files[0]);
+        });
+
+        [widthInput, widthSlider].forEach(input => {
+            input.addEventListener('input', () => {
+                widthInput.value = widthSlider.value = input.value;
+                updateDimensions('width');
+            });
+        });
+
+        [heightInput, heightSlider].forEach(input => {
+            input.addEventListener('input', () => {
+                heightInput.value = heightSlider.value = input.value;
+                updateDimensions('height');
+            });
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = widthInput.value;
+            canvas.height = heightInput.value;
+            
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(imagePreview, 0, 0, canvas.width, canvas.height);
+            
+            canvas.toBlob(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.download = `resized-image.${formatSelect.value}`;
+                a.href = url;
+                a.click();
+                URL.revokeObjectURL(url);
+            }, `image/${formatSelect.value}`, 0.9);
+        });
+        // Reload ads on resize for better responsive behavior
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }, 500);
+        });
+    </script>
+</body>
+</html>
